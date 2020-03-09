@@ -4,7 +4,6 @@ class GetShippingOption extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        shippingOp: ""
       };
       this._validateOnDemand = true; // this flag enables onBlur validation as user fills forms
       this.validationCheck = this.validationCheck.bind(this);
@@ -40,7 +39,7 @@ class GetShippingOption extends Component {
   
      _validateData(data) {
       return  {
-        shippingOpVal: (data.shippingOp != 0)
+        shippingOpVal: (data.shippingOp !== '' && data.shippingOp !== '0')
         }
     }
   
@@ -71,34 +70,34 @@ class GetShippingOption extends Component {
       return (
         <div className="step step4">
           <div className="row">
-            <form id="Form" className="form-horizontal">
-              <div className="form-group">
-                <label className="col-md-12 control-label">
-                  <h1>Step 4: Select Shipping Option</h1>
-                </label>
-              </div>
-              <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label">
-                    Shipping Option
-                  </label>
-                  <div className={notValidClasses.shippingOpCls}>
-                    <select
-                      ref="shippingOp"
-                      autoComplete="off"
-                      className="form-control"
-                      required
-                      defaultValue={this.state.shippingOp}
-                      onBlur={this.validationCheck}>
-                        <option value="">Please select</option>
-                        <option value="1">Ground</option>
-                        <option value="2">Priority</option>
-                    </select>
-                    <div className={notValidClasses.shippingOpValGrpCls}>{this.state.shippingOpValMsg}</div>
-                  </div>
+            <div className="card">
+                <h5 className="card-header">Step 4: Select Shipping Option</h5>
+                <div className="card-body">
+                      <form id="Form" className="form-horizontal">
+                        <div className="form-group col-md-5 col-xs-12 content form-block-holder">
+                          <label className="control-label">
+                            Shipping Option
+                          </label>
+                          <div className={notValidClasses.shippingOpCls}>
+                              <select
+                                ref="shippingOp"
+                                autoComplete="off"
+                                className="form-control"
+                                required
+                                defaultValue={this.props.wizardContext.shippingOption}
+                                onBlur={this.validationCheck}>
+                                  <option value="">Please select</option>
+                                  <option value="1">Ground</option>
+                                  <option value="2">Priority</option>
+                              </select>
+                              <div className={notValidClasses.shippingOpValGrpCls}>{this.state.shippingOpValMsg}</div>
+                          </div>
+                      </div>
+                  </form>
                 </div>
-            </form>
+            </div>
           </div>
-        </div>
+      </div>
       )
     }
   }

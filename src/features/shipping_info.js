@@ -13,8 +13,8 @@
         state: "",
         zip: ""
     },
-    weight: "",
-    shippingOption: 1
+    weight: "0",
+    shippingOption: ""
 }
 
 export default ShippingInfo;

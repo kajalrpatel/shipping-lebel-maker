@@ -72,7 +72,7 @@ class GetReceiverAddress extends Component {
                 notValidClasses[to+'ValGrpCls'] = 'val-err-tooltip';
             }
             return(
-                <div className="form-group col-md-12 content form-block-holder" key={to}>
+                <div className="form-group col-md-5 col-xs-12 content form-block-holder" key={to}>
                 <label className="control-label">
                   {to}
                 </label>
@@ -85,7 +85,7 @@ class GetReceiverAddress extends Component {
                     className="form-control"
                     required
                     defaultValue={shippingInfoTo[to]}
-                    onBlur={this.validationCheck} />
+                    onChange={this.validationCheck} />
                   <div className={notValidClasses[to+'ValGrpCls']}>{this.state[to+'ValMsg']}</div>
                 </div>
               </div>
@@ -95,17 +95,19 @@ class GetReceiverAddress extends Component {
   
       return (
         <div className="step step2">
-          <div className="row">
-            <form id="Form" className="form-horizontal">
-              <div className="form-group">
-                <label className="col-md-12 control-label">
-                  <h1>Step 2: Enter the Receiver's address:</h1>
-                </label>
+        <div className="row">
+           <div className="card">
+              <h5 className="card-header">Step 2: Enter Receiver's Address</h5>
+              <div className="card-body">
+                  <form id="Form" className="form-horizontal">
+                      <div className="row">
+                           {formData}
+                      </div>
+                  </form>
               </div>
-               {formData}
-            </form>
           </div>
         </div>
+      </div>
       )
     }
   }

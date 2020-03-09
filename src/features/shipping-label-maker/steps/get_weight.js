@@ -39,7 +39,7 @@ class GetWeight extends Component {
   
      _validateData(data) {
       return  {
-        weightVal: (data.weight.length >= 1)
+        weightVal: (data.weight.length >= 1 && data.weight !== '0')
       }
     }
   
@@ -61,42 +61,42 @@ class GetWeight extends Component {
       let notValidClasses = {};
       const weight = this.props.wizardContext.weight;
       if (typeof this.state.weightVal == 'undefined' || this.state.weightVal) {
-          notValidClasses.weightCls = 'no-error col-md-7';
+          notValidClasses.weightCls = 'no-error';
       }
       else {
-         notValidClasses.weightCls = 'has-error col-md-7';
+         notValidClasses.weightCls = 'has-error';
          notValidClasses.weightValGrpCls = 'val-err-tooltip';
       }
   
       return (
         <div className="step step3">
           <div className="row">
-            <form id="Form" className="form-horizontal">
-              <div className="form-group">
-                <label className="col-md-12 control-label">
-                  <h1>Step 3: Enter Weight</h1>
-                </label>
-              </div>
-                <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label col-md-4">
-                    Weight
-                  </label>
-                  <div className={notValidClasses.weightCls}>
-                    <input
-                      ref="weight"
-                      autoComplete="off"
-                      type="number"
-                      placeholder="Enter Weight.."
-                      className="form-control"
-                      required
-                      defaultValue={weight}
-                      onBlur={this.validationCheck} />
-                    <div className={notValidClasses.weightValGrpCls}>{this.state.weightValMsg}</div>
-                  </div>
+            <div className="card">
+                <h5 className="card-header">Step 3: Enter Weight</h5>
+                <div className="card-body">
+                        <form id="Form" className="form-horizontal">
+                          <div className="form-group col-md-5 col-xs-12 content form-block-holder">
+                              <label className="control-label">
+                                Weight
+                              </label>
+                              <div className={notValidClasses.weightCls}>
+                                <input
+                                  ref="weight"
+                                  autoComplete="off"
+                                  type="number"
+                                  placeholder="Enter Weight.."
+                                  className="form-control"
+                                  required
+                                  defaultValue={weight}
+                                  onBlur={this.validationCheck} />
+                                <div className={notValidClasses.weightValGrpCls}>{this.state.weightValMsg}</div>
+                              </div>
+                          </div>
+                    </form>
                 </div>
-            </form>
+            </div>
           </div>
-        </div>
+      </div>
       )
     }
   }

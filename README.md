@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Live Demo
 
-https://react-6wownw.stackblitz.io/
+https://stackblitz.com/edit/react-6wownw
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
